@@ -48,9 +48,22 @@
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
+    },
+    "hero_banner_test_pzaTAX": {
+      "type": "hero-banner-test",
+      "name": "Hero Banner Test",
+      "settings": {
+        "hero_banner_image": "shopify://shop_images/Group_1000008197_1.png",
+        "hero_banner_image_mb": "shopify://shop_images/Frame.png",
+        "hero_banner_title": "The Gift Guide",
+        "hero_banner_subtitle": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "hero_banner_btn": "Shop Now",
+        "hero_banner_btn_url": "shopify://collections/all"
+      }
     }
   },
   "order": [
-    "image_banner"
+    "image_banner",
+    "hero_banner_test_pzaTAX"
   ]
 }
