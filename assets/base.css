@@ -3595,3 +3595,44 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+/* custom container */
+.page-width-custom {
+  max-width: 1520px;
+  margin:0 auto;
+  padding:0 4rem;
+}
+
+@media (max-width: 749px) {
+  .page-width-custom {
+    padding:0 1.5rem;
+  }
+}
+
+/* custom button css */
+.btn--primary {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn--secondary {
+  background-color: #FFF544;
+  color: #000;
+}
+
+.btn--secondary:hover {
+  background-color: #e5df78;
+  color: #000;
+}
+
+.btn{ 
+  padding: 10px 35px;
+  min-width:220px;
+  letter-spacing: 0;
+  transition: all 1s;
+}
