@@ -12,10 +12,15 @@ header.custom-header {
     align-items: center;
 }
 
+.custom-header .header_inner .header__heading-link {
+    padding-left: 0;
+}
+
 .custom-header .header_inner .header_btn {
     text-decoration: none;  
     text-align: center;
     text-transform: uppercase;
+    display: inline-flex;
 }
 
 .custom-header .header_inner .header_text {

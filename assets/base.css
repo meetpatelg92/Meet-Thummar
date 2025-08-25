@@ -3600,13 +3600,7 @@ details-disclosure > details {
 .page-width-custom {
   max-width: 1520px;
   margin:0 auto;
-  padding:0 4rem;
-}
-
-@media (max-width: 749px) {
-  .page-width-custom {
-    padding:0 1.5rem;
-  }
+  padding:0 5rem;
 }
 
 /* custom button css */
@@ -3616,7 +3610,7 @@ details-disclosure > details {
 }
 
 .btn--primary:hover {
-  background-color: #000;
+  background-color: #464444;
   color: #fff;
 }
 
@@ -3634,5 +3628,22 @@ details-disclosure > details {
   padding: 10px 35px;
   min-width:220px;
   letter-spacing: 0;
-  transition: all 1s;
+  transition: ease 0.7s;
+}
+
+@media (min-width:1550px) {
+  .page-width-custom {
+    padding:0 15rem;
+    max-width: 3840px;
+  }
+}
+
+@media (max-width: 749px) {
+  .page-width-custom {
+    padding:0 1.5rem;
+  }
+
+  .btn{  
+    padding: 10px 20px;
+  }
 }
