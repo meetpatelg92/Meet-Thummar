@@ -1,0 +1,99 @@
+.hero-banner-test {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;   
+}
+
+.hero-banner-test img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-banner-test .hero-banner-mobile {
+    display: none;
+}
+
+.hero-banner-test .hero-banner-content .hero-banner-btn {
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.hero-banner-test .hero-banner-title {
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-size: 7rem;
+    font-weight: 500;
+}
+.hero-banner-test .hero-banner-subtitle {
+    margin-bottom: 45px;
+    font-size: 20px;
+    line-height: 140%;
+    color: #000;
+    letter-spacing: 0;
+    margin-bottom: 40px;
+}
+
+.hero-banner-test .hero-banner-content {
+    max-width: 48rem;       
+    position:absolute;
+    bottom:6rem
+}
+
+.hero-banner-test .hero-banner-content span.arrow {
+    margin-left: 20px;
+}
+
+.hero-banner-test .hero-banner-content .hero-banner-btn svg path{
+    fill: #fff;
+}
+
+
+@media (max-width:1024px) {
+    .hero-banner-test .hero-banner-title {
+        font-size: 4rem;
+        margin-bottom: 2rem;
+    }
+    .hero-banner-test .hero-banner-subtitle {
+        font-size: 18px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-banner-test .hero-banner-content {
+        bottom: 3rem;
+        max-width: 35rem;
+    }
+}
+
+@media (max-width: 749px) {
+    .hero-banner-test .hero-banner-desktop {
+        display: none;
+    }
+    .hero-banner-test .hero-banner-mobile {
+        display: block;
+    }
+
+    .hero-banner-test .hero-banner-subtitle,
+    .hero-banner-test .hero-banner-title {
+        display: none;
+    }
+
+    .hero-banner-test .hero-banner-content{ 
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+        left: 0;
+    }
+
+    .hero-banner-test .hero-banner-content {
+        bottom: 4.5rem;
+    }
+
+    .hero-banner-test .hero-banner-content .hero-banner-btn {
+        min-width: 190px;
+    }
+}

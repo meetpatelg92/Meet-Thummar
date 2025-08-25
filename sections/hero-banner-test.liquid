@@ -1,0 +1,120 @@
+{{ 'hero-banner-custom.css' | asset_url | stylesheet_tag }}
+
+<div class="hero-banner-test">
+
+    <div class="hero-banner-image">
+        {% if section.settings.hero_banner_image != blank %}
+            <div class="hero-banner-desktop">
+                {{
+                    section.settings.hero_banner_image
+                    | image_url: width: 3840
+                    | image_tag:
+                    width: section.settings.hero_banner_image.width,
+                    height: '100%',
+                    alt: section.settings.hero_banner_image.alt,
+                    class: 'hero-banner-image-desktop',
+                    widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                    loadpriority: 'high',
+                    loading:"lazy"
+                }}
+            </div>
+        {% endif %}
+       
+        <div class="hero-banner-mobile">
+            {% if section.settings.hero_banner_image_mb != blank %}
+                {{
+                    section.settings.hero_banner_image_mb
+                    | image_url: width: 1000
+                    | image_tag:
+                    width: section.settings.hero_banner_image_mb.width,
+                    height: '100%',
+                    alt: section.settings.hero_banner_image_mb.alt,
+                    class: 'hero-banner-image-mobile',
+                    widths: '375, 550, 750, 800,1000,1200,1500',
+                    loading:"lazy"
+                }}
+            {% else %}
+                {{
+                    section.settings.hero_banner_image
+                    | image_url: width: 1000
+                    | image_tag:
+                    width: section.settings.hero_banner_image.width,
+                    height: '100%',
+                    alt: section.settings.hero_banner_image.alt,
+                    class: 'hero-banner-image-mobile',
+                    widths: '375, 550, 750, 800,1000,1200,1500',
+                    loading:"lazy"
+                }}
+            {% endif %} 
+        </div>
+
+    </div>
+
+    <div class="page-width-custom">
+        <div class="hero-banner-content">
+            {% if section.settings.hero_banner_title != blank %}
+                <h1 class="hero-banner-title">{{ section.settings.hero_banner_title }}</h1>
+            {% endif %}
+    
+            {% if section.settings.hero_banner_subtitle != blank %}
+                <p class="hero-banner-subtitle">{{ section.settings.hero_banner_subtitle }}</p>
+            {% endif %}
+    
+            {% if section.settings.hero_banner_btn != blank and section.settings.hero_banner_btn_url != blank %}
+                <a href="{{ section.settings.hero_banner_btn_url }}" class="hero-banner-btn btn btn--primary">
+                    <span>{{ section.settings.hero_banner_btn }}</span>
+                    <span class="arrow">{% render 'icon-arrow-right-test' %}</span>
+                </a>
+            {% endif %}
+    
+        </div>
+    </div>
+
+</div>
+
+{% schema %}
+    {
+        "name": "Hero Banner Test",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "hero_banner_image",
+                "label": "Hero Banner Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "hero_banner_image_mb",
+                "label": "Hero Banner Image Mobile"
+            },
+            {
+                "type": "text",
+                "id": "hero_banner_title",
+                "label": "Hero Banner Title",
+            },
+            {
+                "type": "text",
+                "id": "hero_banner_subtitle",
+                "label": "Hero Banner Subtitle",
+            },
+            {
+                "type":"text",
+                "id":"hero_banner_btn",
+                "label": "Hero Banner Button",
+                "default": "Shop Now"
+            },
+            {
+                "type":"url",
+                "id":"hero_banner_btn_url",
+                "label": "Hero Banner Button URL",
+                "default": "/collections/all"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Hero Banner Test",
+                "category": "Custom"
+            }
+        ]
+    }   
+{% endschema %}
