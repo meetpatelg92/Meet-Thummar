@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="{{ 'custom-header.css' | asset_url }}">
+
+<header class="custom-header page-width-custom">
+    <div class="menu_icon_mobile">
+        <button type="button" name="menu-icon">
+            {% render 'icon-menu-test' %}
+        </button>
+    </div>
+    <div class="header_inner header_desktop">
+        <div class="header_brand_logo">
+            <a href="{{ shop.url }}" class="header__heading-link">
+                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+                {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
+                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+                {{
+                settings.logo
+                | image_url: width: 600
+                | image_tag:
+                    class: 'header__heading-logo',
+                    widths: widths,
+                    height: logo_height,
+                    width: settings.logo_width,
+                    alt: logo_alt,
+                    sizes: sizes,
+                    preload: true
+                }}
+            </a>
+        </div>
+        <div class="header_content">
+            <p class="header_text">{{ section.settings.header_text }}</p>
+        </div>
+        <div class="header_button">
+            {% if section.settings.header_btn != blank and section.settings.header_btn_url != blank %}
+                <a href="{{ section.settings.header_btn_url }}" class="header_btn btn btn--secondary">
+                    <span>{{ section.settings.header_btn }}</span>
+                    <span class="arrow">{% render 'icon-arrow-right-test' %}</span>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+{% schema %}
+    {
+        "name": "Custom Header Test",
+        "settings": [
+            {
+                "type": "text",
+                "id": "header_text",
+                "label": "Header Text",
+                "default": "Find the ideal gift for your loved ones."
+            },
+            {
+                "type":"text",
+                "id":"header_btn",
+                "label": "Header Button"
+            },
+            {
+                "type":"url",
+                "id":"header_btn_url",
+                "label": "Header Button url"
+            }
+        ],
+        "presets": [
+            {
+            "name": "Custom Header"
+            }
+        ]
+    }
+{% endschema %}

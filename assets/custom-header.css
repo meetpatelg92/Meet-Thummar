@@ -1,0 +1,61 @@
+
+header.custom-header {
+    background-color: #F5F5F5;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    position: relative;
+}
+
+.custom-header .header_inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-header .header_inner .header_btn {
+    text-decoration: none;  
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.custom-header .header_inner .header_text {
+    margin: 0;
+    color:#000
+}
+
+.custom-header .header_brand_logo img{
+    vertical-align: middle;
+}
+
+.custom-header .header_button .arrow {
+    margin-left: 2rem;
+}
+
+.custom-header .menu_icon_mobile {
+    display: none;    
+}
+
+@media (max-width:749px){ 
+    .custom-header .header_content,
+    .custom-header .header_button{
+       display: none;
+    }
+
+    .custom-header .menu_icon_mobile {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .custom-header .header_inner{ 
+        justify-content: center;
+    }
+
+    .custom-header .menu_icon_mobile button{ 
+        background:none;
+        border:none;
+        padding:0;
+        outline: none;
+    }
+}
