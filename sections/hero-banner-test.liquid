@@ -1,73 +1,94 @@
 {{ 'hero-banner-custom.css' | asset_url | stylesheet_tag }}
 
-<div class="hero-banner-test">
+<div class="hero-banner-test scroll-trigger animate--fade-in">
 
-    <div class="hero-banner-image">
-        {% if section.settings.hero_banner_image != blank %}
-            <div class="hero-banner-desktop">
-                {{
-                    section.settings.hero_banner_image
-                    | image_url: width: 3840
-                    | image_tag:
-                    width: section.settings.hero_banner_image.width,
-                    height: '100%',
-                    alt: section.settings.hero_banner_image.alt,
-                    class: 'hero-banner-image-desktop',
-                    widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
-                    loadpriority: 'high',
-                    loading:"lazy"
-                }}
-            </div>
-        {% endif %}
-       
-        <div class="hero-banner-mobile">
-            {% if section.settings.hero_banner_image_mb != blank %}
-                {{
-                    section.settings.hero_banner_image_mb
-                    | image_url: width: 1000
-                    | image_tag:
-                    width: section.settings.hero_banner_image_mb.width,
-                    height: '100%',
-                    alt: section.settings.hero_banner_image_mb.alt,
-                    class: 'hero-banner-image-mobile',
-                    widths: '375, 550, 750, 800,1000,1200,1500',
-                    loading:"lazy"
-                }}
-            {% else %}
-                {{
-                    section.settings.hero_banner_image
-                    | image_url: width: 1000
-                    | image_tag:
-                    width: section.settings.hero_banner_image.width,
-                    height: '100%',
-                    alt: section.settings.hero_banner_image.alt,
-                    class: 'hero-banner-image-mobile',
-                    widths: '375, 550, 750, 800,1000,1200,1500',
-                    loading:"lazy"
-                }}
-            {% endif %} 
-        </div>
-
-    </div>
-
-    <div class="page-width-custom">
-        <div class="hero-banner-content">
+    <div class="hero-banner-inner">
+        <div class="content_mobile_block page-width-custom">
             {% if section.settings.hero_banner_title != blank %}
-                <h1 class="hero-banner-title">{{ section.settings.hero_banner_title }}</h1>
+                <h1 class="hero-banner-title--mobile">{{ section.settings.hero_banner_title }}</h1>
             {% endif %}
     
-            {% if section.settings.hero_banner_subtitle != blank %}
-                <p class="hero-banner-subtitle">{{ section.settings.hero_banner_subtitle }}</p>
+            {% if section.settings.hero_banner_subtitle_mb != blank %}
+                <p class="hero-banner-subtitle--mobile">{{ section.settings.hero_banner_subtitle_mb }}</p>
             {% endif %}
+        </div>
     
-            {% if section.settings.hero_banner_btn != blank and section.settings.hero_banner_btn_url != blank %}
-                <a href="{{ section.settings.hero_banner_btn_url }}" class="hero-banner-btn btn btn--primary">
-                    <span>{{ section.settings.hero_banner_btn }}</span>
-                    <span class="arrow">{% render 'icon-arrow-right-test' %}</span>
-                </a>
+        <div class="hero-banner-image">
+            {% if section.settings.hero_banner_image != blank %}
+                <div class="hero-banner-desktop">
+                    {{
+                        section.settings.hero_banner_image
+                        | image_url: width: 3840
+                        | image_tag:
+                        width: section.settings.hero_banner_image.width,
+                        height: '100%',
+                        alt: section.settings.hero_banner_image.alt,
+                        class: 'hero-banner-image-desktop',
+                        widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                        loadpriority: 'high',
+                        loading:"lazy"
+                    }}
+                </div>
             {% endif %}
+           
+            {% comment %}
+                Mobile Image Code Starts Here
+            {% endcomment %}
+            <div class="hero-banner-mobile">
+                {% if section.settings.hero_banner_image_mb != blank %}
+                    {{
+                        section.settings.hero_banner_image_mb
+                        | image_url: width: 1000
+                        | image_tag:
+                        width: 500,
+                        height: '100%',
+                        alt: section.settings.hero_banner_image_mb.alt,
+                        class: 'hero-banner-image-mobile',
+                        widths: '375, 550, 750, 800,1000,1200,1500',
+                        loading:"lazy"
+                    }}
+                {% else %}
+                    {{
+                        section.settings.hero_banner_image
+                        | image_url: width: 1000
+                        | image_tag:
+                        width: 500,
+                        height: '100%',
+                        alt: section.settings.hero_banner_image.alt,
+                        class: 'hero-banner-image-mobile',
+                        widths: '375, 550, 750, 800,1000,1200,1500',
+                        loading:"lazy"
+                    }}
+                {% endif %} 
+            </div>
     
         </div>
+    
+        <div class="page-width-custom">
+            <div class="hero-banner-content">
+                {% if section.settings.hero_banner_title != blank %}
+                    <h1 class="hero-banner-title">{{ section.settings.hero_banner_title }}</h1>
+                {% endif %}
+        
+                {% if section.settings.hero_banner_subtitle != blank %}
+                    <p class="hero-banner-subtitle">{{ section.settings.hero_banner_subtitle }}</p>
+                {% endif %}
+        
+                {% if section.settings.hero_banner_btn != blank and section.settings.hero_banner_btn_url != blank %}
+                    <a href="{{ section.settings.hero_banner_btn_url }}" class="hero-banner-btn btn btn--primary">
+                        <span>{{ section.settings.hero_banner_btn }}</span>
+                        <span class="arrow">{% render 'icon-arrow-right-test' %}</span>
+                    </a>
+                {% endif %}
+        
+            </div>
+        </div>
+    </div>
+  
+    {% comment %} Footer little banner text {% endcomment %}
+    <div class="hero-banner-footer-block">
+        <p class="hero-banner-footer-text">{{ section.settings.hero_footer_text }}</p>
+        <p class="hero-banner-footer-text--mb">{{ section.settings.hero_footer_text_mb }}</p>
     </div>
 
 </div>
@@ -98,6 +119,11 @@
                 "label": "Hero Banner Subtitle",
             },
             {
+                "type": "text",
+                "id": "hero_banner_subtitle_mb",
+                "label": "Hero Banner Subtitle Mobile",
+            },
+            {
                 "type":"text",
                 "id":"hero_banner_btn",
                 "label": "Hero Banner Button",
@@ -108,6 +134,18 @@
                 "id":"hero_banner_btn_url",
                 "label": "Hero Banner Button URL",
                 "default": "/collections/all"
+            },
+            {
+                "type": "text",
+                "id": "hero_footer_text",
+                "label": "Hero Footer Text",
+                "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+            },
+            {
+                "type": "text",
+                "id": "hero_footer_text_mb",
+                "label": "Hero Footer Text Mobile",
+                "default": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
             }
         ],
         "presets": [

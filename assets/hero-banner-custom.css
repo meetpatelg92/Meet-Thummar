@@ -1,4 +1,4 @@
-.hero-banner-test {
+.hero-banner-test .hero-banner-inner{
     position: relative;
     width: 100%;
     height: auto;
@@ -10,6 +10,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    display: block
 }
 
 .hero-banner-test .hero-banner-mobile {
@@ -52,6 +53,44 @@
     fill: #fff;
 }
 
+.hero-banner-test .content_mobile_block {
+    text-align: center;
+    display: none;
+}
+
+.hero-banner-test .content_mobile_block .hero-banner-title--mobile{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.hero-banner-test .content_mobile_block .hero-banner-subtitle--mobile{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 0;
+    color: #000;
+}
+
+.hero-banner-footer-block {
+    padding:10px 20px;
+    background-color: #F5F5F5;
+    text-align: center;
+}
+
+.hero-banner-footer-block .hero-banner-footer-text{
+    font-size: 16px;
+    line-height: 14px;   
+    letter-spacing: 0;
+    margin: 0;
+    color:#000
+}
+
+.hero-banner-footer-block .hero-banner-footer-text--mb{ 
+    display: none;
+}
 
 @media (max-width:1024px) {
     .hero-banner-test .hero-banner-title {
@@ -70,6 +109,16 @@
 }
 
 @media (max-width: 749px) {
+    .hero-banner-test .content_mobile_block { 
+        display: block;
+        max-width: 340px;
+    }
+
+
+    .hero-banner-footer-block { 
+        padding: 10px 20px;
+    }
+
     .hero-banner-test .hero-banner-desktop {
         display: none;
     }
@@ -77,6 +126,7 @@
         display: block;
     }
 
+    .hero-banner-footer-block .hero-banner-footer-text,
     .hero-banner-test .hero-banner-subtitle,
     .hero-banner-test .hero-banner-title {
         display: none;
@@ -90,10 +140,18 @@
     }
 
     .hero-banner-test .hero-banner-content {
-        bottom: 4.5rem;
+        bottom: 4.8rem;
     }
 
     .hero-banner-test .hero-banner-content .hero-banner-btn {
         min-width: 190px;
+    }
+
+    .hero-banner-footer-block .hero-banner-footer-text--mb{ 
+        font-size:14px;
+        margin: 0;
+        letter-spacing: 0;
+        line-height: 14px;
+        display: block
     }
 }
