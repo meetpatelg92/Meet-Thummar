@@ -3629,6 +3629,9 @@ details-disclosure > details {
   min-width:220px;
   letter-spacing: 0;
   transition: ease 0.7s;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
 }
 
 @media (min-width:1550px) {
