@@ -1,0 +1,116 @@
+<div class="product_popup" id="product-popup-{{ block.id }}" data-popup="popup-{{ block.id }}">
+    <div class="popup_content">
+        <div class="close_popup">
+            <span data-close-popup>{% render 'icon-close-test' %}</span>
+        </div>
+        <div class="popup_product-meta">
+            <div class="popup_image">
+                {{
+                    product.featured_image
+                    | image_url: width: 400
+                    | image_tag:
+                    width: 120,
+                    height: 140,
+                    alt: product.featured_image.alt,
+                    class: 'popup-product--image',
+                    widths: '120, 200, 400',
+                    loading:"lazy"
+                }}
+            </div>
+            <div class="popup_details">
+                <h3 class="popup-product-title">{{ product.title }}</h3>
+              
+                {% if product.price > 0 %}
+                    <p class="price">{{ product.selected_or_first_available_variant.price | money }}</p>
+                {% else %}
+                    <p class="price">Free</p>
+                {% endif %}
+
+                {% if product.description != blank %}
+                    <div class="description">{{ product.description | truncatewords: 15 }}</div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% comment %}Product variants/options showing here{% endcomment %}
+        <div class="product_variant--options">
+            {% for option in product.options_with_values %}
+                {% if option.name contains 'Color' or option.name contains 'color' %}
+                    <div class="option_block" data-option="option{{ option.position }}">
+                        <p class="option_label">{{ option.name }}</p>
+                        <div class="options_values option_colors">
+                            {% for value in option.values %}
+                                <div class="option_value" data-value="{{ value | escape }}" id="option-{{ value.id }}-{{ product.id }}">
+                                    <input
+                                        type="radio"
+                                        id="option{{ option.position }}-{{ value | escape }}-{{ block.id }}"
+                                        name="option-{{ option.position }}-{{ block.id }}"
+                                        value="{{ value | escape }}"
+                                        {% if forloop.first %}checked{% endif %}>
+                                    <label data-value="{{ value | escape }}" for="option{{ option.position }}-{{ value | escape }}-{{ block.id }}" title="{{ value }}">
+                                        {{ value }}
+                                    </label>
+                                    <style>
+                                        #option-{{ value.id }}-{{ product.id }} label:before {
+                                            background: {{ value | downcase }};
+                                            content: '';
+                                            position: absolute;
+                                            width: 6px;
+                                            height: 100%;
+                                            top: 0;
+                                            left: 0;
+                                            border-right: 1px solid black;
+                                        }
+                                    </style>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="option_block" data-option="option{{ option.position }}">
+                        <p class="option_label">{{ option.name }}</p>
+                        <div class="options_values">
+                            <div class="select_size-block">
+                                <p class="choose_size" data-size>Choose your size</p>
+                                <span>{% render 'icon-arrow-down-test' %}</span>
+                            </div>
+                            <div class="options_values_list"> 
+                                {% for value in option.values %}
+                                    <div class="option_value" data-value="{{ value | escape }}">
+                                        {{ value }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% comment %}Add to cart button showing here{% endcomment %}
+        <div class="popup_atc">
+            {% assign product_form_id = 'quick-add-' | append: section.id | append: product.id %}
+            {%- form 'product',
+                product,
+                id: product_form_id,
+                class: 'form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+              -%}
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-popup-variant-id />
+                <button
+                    type="submit"
+                    name="add"
+                    class="btn btn--full-width btn--primary"
+                    data-popup-add-to-cart>
+                    <span>{{ 'products.product.add_to_cart' | t }}</span>
+                    <span>{% render 'icon-arrow-right-test' %}</span>
+                </button>
+            {% endform %}
+        </div>
+    </div>
+
+    <script type="application/json" id="popup-product-variants-{{ product.id }}">
+        {{ product.variants | json }}
+    </script>
+</div>

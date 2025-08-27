@@ -92,6 +92,12 @@
     display: none;
 }
 
+@media (max-width:1280px) {
+    .hero-banner-test .hero-banner-content {
+        bottom: 2rem;
+    }
+}
+
 @media (max-width:1024px) {
     .hero-banner-test .hero-banner-title {
         font-size: 4rem;

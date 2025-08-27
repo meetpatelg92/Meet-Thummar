@@ -57,13 +57,82 @@
         "hero_banner_image_mb": "shopify://shop_images/Frame.png",
         "hero_banner_title": "The Gift Guide",
         "hero_banner_subtitle": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "hero_banner_subtitle_mb": "Discover Joy: Your Ultimate Holiday Gift Destination.",
         "hero_banner_btn": "Shop Now",
-        "hero_banner_btn_url": "shopify://collections/all"
+        "hero_banner_btn_url": "shopify://collections/all",
+        "hero_footer_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL",
+        "hero_footer_text_mb": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
+      }
+    },
+    "products_grid_test_38bdyE": {
+      "type": "products-grid-test",
+      "blocks": {
+        "product_8z4m6h": {
+          "type": "product",
+          "settings": {
+            "product": "black-leather-bag",
+            "icon_position_top": 59,
+            "icon_position_left": 62
+          }
+        },
+        "product_UgqxLM": {
+          "type": "product",
+          "settings": {
+            "product": "blue-silk-tuxedo",
+            "icon_position_top": 56,
+            "icon_position_left": 85
+          }
+        },
+        "product_P3C8kp": {
+          "type": "product",
+          "settings": {
+            "product": "chequered-red-shirt",
+            "icon_position_top": 24,
+            "icon_position_left": 65
+          }
+        },
+        "product_GkVLGF": {
+          "type": "product",
+          "settings": {
+            "product": "classic-leather-jacket",
+            "icon_position_top": 23,
+            "icon_position_left": 73
+          }
+        },
+        "product_AedRPp": {
+          "type": "product",
+          "settings": {
+            "product": "classic-varsity-top",
+            "icon_position_top": 31,
+            "icon_position_left": 50
+          }
+        },
+        "product_TiUW3V": {
+          "type": "product",
+          "settings": {
+            "product": "dark-denim-top",
+            "icon_position_top": 42,
+            "icon_position_left": 77
+          }
+        }
+      },
+      "block_order": [
+        "product_8z4m6h",
+        "product_UgqxLM",
+        "product_P3C8kp",
+        "product_GkVLGF",
+        "product_AedRPp",
+        "product_TiUW3V"
+      ],
+      "name": "Products Grid Test",
+      "settings": {
+        "section_title": "Tisso vison in the wild"
       }
     }
   },
   "order": [
     "image_banner",
-    "hero_banner_test_pzaTAX"
+    "hero_banner_test_pzaTAX",
+    "products_grid_test_38bdyE"
   ]
 }

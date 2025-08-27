@@ -1,0 +1,262 @@
+.products-grid {
+    padding: 40px 0;
+}
+
+.products-grid .section-title{
+    font-size: 3.6rem;
+    font-family: 'Lustria', serif;
+    font-size: 36px;
+    margin:0;
+    margin-bottom: 30px;
+}
+
+.products-grid .products-grid-block .products-grid-inner{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:15px
+}
+
+.products-grid .products-grid-block .product-media img{
+    width:100%;
+    height:auto;
+    display: block;
+    aspect-ratio: 433/444;
+    object-fit: cover;
+}
+
+.products-grid .products-grid-block .single-product {
+    position: relative;
+}
+
+.products-grid .products-grid-block .plus_icon {
+    position: absolute;
+}
+
+.products-grid .products-grid-block .plus_icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.products-grid .products-grid-block .plus_icon button[name="Plus Button"]{
+    background:none;
+    border:none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+@media (max-width:749px){ 
+    .products-grid .products-grid-block .products-grid-inner{
+        grid-template-columns: 1fr 1fr;
+        gap:5px
+    }
+
+    .products-grid .section-title{ 
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .products-grid .section-title{ 
+        margin-bottom: 20px;
+    }
+
+    .products-grid .products-grid-block .plus_icon svg {
+        width: 15px;
+        height: 15px;
+    }
+
+}
+
+/* product popup css */
+.products-grid-inner .product_popup {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5); 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.products-grid-inner .product_popup .popup_content{
+    max-width: 311px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.products-grid-inner .product_popup .popup_content .popup_image img{ 
+    object-fit: cover;
+}
+
+.products-grid-inner .product_popup .popup_content .popup_product-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.products-grid-inner .product_popup .popup_content .close_popup {
+    width: 100%;
+    text-align: right;
+    display: inline-block;
+}
+
+.products-grid-inner .product_popup .popup_content .close_popup [data-close-popup]{
+    cursor: pointer;
+}
+
+.products-grid-inner .product_popup .popup_content .popup-product-title{
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 0;
+    margin-top: 10px;
+}
+
+.products-grid-inner .product_popup .popup_content p.price{
+    font-size: 16px;
+    font-family: 'Lustria', serif;
+    font-weight: 400;
+    line-height: 120%;
+    color: #000;
+}
+
+.products-grid-inner .product_popup .popup_content .description {
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: -.1px;
+    line-height: 110%;
+}
+
+.products-grid-inner .product_popup.active_popup {
+    display: flex;
+}
+
+.products-grid-inner .product_variant--options {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.products-grid-inner .product_variant--options .option_block input[type="radio"] {
+    display: none;
+}
+
+.products-grid-inner .product_variant--options .option_block .option_colors {
+    display: flex;
+    border: 1px solid #000;
+}
+
+.products-grid-inner .product_variant--options .option_block .option_colors .option_value {
+    flex: 1;
+}
+
+.products-grid-inner .product_variant--options .option_block .option_label {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 130%;
+    letter-spacing: 0;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.products-grid-inner .product_variant--options .option_block {
+    margin-bottom: 15px;
+}
+
+.products-grid-inner .product_variant--options .option_block .option_colors .option_value label {
+    display: block;
+    width: 100%;
+    padding: 6px 0;
+    cursor: pointer;
+    padding-left: 20px;
+    position: relative;
+}
+
+.products-grid-inner .product_variant--options .option_block .option_colors .option_value:first-child {
+    border-right: 1px solid #000;
+}
+
+.products-grid-inner .product_variant--options .option_block .option_colors input[type="radio"]:checked + label {
+    background-color: #000;
+    color: #fff;
+}
+
+.product_popup .popup_atc button {
+    width: 100%;
+    font-family: 'Jost';
+    text-transform: uppercase;
+    letter-spacing: 0;
+    font-size: 16px;
+    line-height: 20px;
+    border: none;
+    cursor: pointer;
+    padding: 12px 0;
+}
+
+.product_popup .popup_atc {
+    margin-top: 35px;
+}
+
+.product_popup .popup_atc button svg path{
+    fill: #fff;
+}
+
+.product_popup .popup_atc button svg {
+    margin-left: 10px;
+}
+
+.products-grid-inner .product_variant--options .options_values .select_size-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.products-grid-inner .product_variant--options .options_values .select_size-block p {
+    margin: 0;
+    font-family: Jost;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -.2px;
+    border-right: 1px solid #000;
+    vertical-align: middle;
+    padding: 14px 10px;
+    width: 100%;
+}
+.products-grid-inner .product_variant--options .options_values .select_size-block span {
+    padding: 0 20px;
+}
+
+.products-grid-inner .product_variant--options .options_values {
+    position: relative;
+}
+
+.products-grid-inner .product_variant--options .options_values .options_values_list{
+    text-align: center;
+    border: 1px solid #000;
+    border-top: 0;
+    position: absolute;
+    display: none;
+    width: 100%;
+    background: white;
+    z-index: 1;
+}
+
+.products-grid-inner .product_variant--options .options_values .options_values_list .option_value {
+    padding: 5px 0;
+    cursor: pointer;
+}   
+
+.products-grid-inner .product_variant--options .options_values .options_values_list .option_value:hover {
+    background: #000;
+    color: #fff;
+}
+
+.products-grid-inner .product_variant--options .options_values .options_values_list.active_size-list {
+    display: block
+}

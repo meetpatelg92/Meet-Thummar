@@ -1,0 +1,108 @@
+{{ 'products-grid-custom.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-popup.js' | asset_url }}" defer="defer"></script>
+
+<div class="products-grid scroll-trigger animate--fade-in" id="section-{{ section.id }}">
+    <div class="page-width-custom">
+        <div class="section-header">
+            {% if section.settings.section_title != blank %}
+                <h2 class="section-title">{{ section.settings.section_title }}</h2>
+            {% endif %}
+        </div>
+        <div class="products-grid-block">
+            <div class="products-grid-inner">
+                {% for block in section.blocks %}
+                    {% if block.settings.product != blank %}
+                        <div class="single-product" id="block-{{ block.id }}">
+                            {% assign product = all_products[block.settings.product] %}
+                            <div class="product-media">
+                                {{
+                                    product.featured_image
+                                    | image_url: width: 800
+                                    | image_tag:
+                                    width: 440,
+                                    height: '100%',
+                                    alt: product.featured_image.alt,
+                                    class: 'product-image',
+                                    widths: '200, 400, 600, 800',
+                                    loading:"lazy"
+                                }}
+                            </div>
+                            <div class="plus_icon">
+                                <button type="button" name="Plus Button" class="plus-button" aria-label="View Product" data-open-popup="popup-{{ block.id }}">
+                                    <span class="plus-icon">{% render 'icon-plus-test' %}</span>
+                                </button>
+                            </div>
+                            {% render 'product-popup-test', block:block, product:product %}
+                            <style>
+                                .products-grid-block #block-{{ block.id }} .plus_icon {
+                                    top: {{ block.settings.icon_position_top }}%;
+                                    left: {{ block.settings.icon_position_left }}%;
+                                    transform: translate(-50%, -50%);
+                                    transition: transform 0.3s ease;
+                                }
+                            </style>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Products Grid Test",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Section Title",
+                "default":"Tisso vison in the wild"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "product",
+                "name": "Product",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Select Product"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Icon Position"
+                    },
+                    {
+                        "type": "range",
+                        "id": "icon_position_top",
+                        "min": 1,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Icon Position Top",
+                        "default": 10
+                    },
+                    {
+                        "type": "range",
+                        "id": "icon_position_left",
+                        "min": 1,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Icon Position Left",
+                        "default": 10
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Products Grid Test",
+                "category": "Custom"
+            }
+        ]
+    }   
+{% endschema %}
