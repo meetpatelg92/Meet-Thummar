@@ -45,28 +45,6 @@
     outline: none;
 }
 
-@media (max-width:749px){ 
-    .products-grid .products-grid-block .products-grid-inner{
-        grid-template-columns: 1fr 1fr;
-        gap:5px
-    }
-
-    .products-grid .section-title{ 
-        text-align: center;
-        font-size: 24px;
-    }
-
-    .products-grid .section-title{ 
-        margin-bottom: 20px;
-    }
-
-    .products-grid .products-grid-block .plus_icon svg {
-        width: 15px;
-        height: 15px;
-    }
-
-}
-
 /* product popup css */
 .products-grid-inner .product_popup {
     display: none; 
@@ -171,8 +149,14 @@
     width: 100%;
     padding: 6px 0;
     cursor: pointer;
+    font-size: 18px;
     padding-left: 20px;
     position: relative;
+}
+
+.products-grid-inner .product_variant--options .option_block .option_colors .option_value label:hover {
+    background-color: #000;
+    color: #fff;
 }
 
 .products-grid-inner .product_variant--options .option_block .option_colors .option_value:first-child {
@@ -194,6 +178,39 @@
     border: none;
     cursor: pointer;
     padding: 12px 0;
+    border: 1px solid transparent;
+}
+
+.product_popup .popup_atc button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #fff, #fff);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.product_popup .popup_atc button:hover:before { 
+    left: 0;
+}
+
+.product_popup .popup_atc .select_options-error-msg {
+    margin: 0;
+    font-size: 14px;
+    color: red;
+    margin-bottom: 5px;
+}
+
+.product_popup .popup_atc button:hover {
+    color: #000;
+    border: 1px solid #000;
+}
+
+.product_popup .popup_atc button:hover svg path{
+    fill: #000;
 }
 
 .product_popup .popup_atc {
@@ -244,7 +261,7 @@
     display: none;
     width: 100%;
     background: white;
-    z-index: 1;
+    z-index: 2;
 }
 
 .products-grid-inner .product_variant--options .options_values .options_values_list .option_value {
@@ -259,4 +276,30 @@
 
 .products-grid-inner .product_variant--options .options_values .options_values_list.active_size-list {
     display: block
+}
+
+@media (max-width:749px){ 
+    .products-grid .products-grid-block .products-grid-inner{
+        grid-template-columns: 1fr 1fr;
+        gap:5px
+    }
+
+    .products-grid .section-title{ 
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .products-grid .section-title{ 
+        margin-bottom: 20px;
+    }
+
+    .products-grid .products-grid-block .plus_icon svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .products-grid-inner .product_popup .popup_content {
+        max-width: 350px;
+    }
+
 }

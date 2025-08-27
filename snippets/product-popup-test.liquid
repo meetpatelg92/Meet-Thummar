@@ -46,7 +46,7 @@
                                         id="option{{ option.position }}-{{ value | escape }}-{{ block.id }}"
                                         name="option-{{ option.position }}-{{ block.id }}"
                                         value="{{ value | escape }}"
-                                        {% if forloop.first %}checked{% endif %}>
+                                      >
                                     <label data-value="{{ value | escape }}" for="option{{ option.position }}-{{ value | escape }}-{{ block.id }}" title="{{ value }}">
                                         {{ value }}
                                     </label>
@@ -88,7 +88,8 @@
         </div>
 
         {% comment %}Add to cart button showing here{% endcomment %}
-        <div class="popup_atc">
+        <div class="popup_atc" data-extra-addOn-id={{ section.settings.extra_add_product.selected_or_first_available_variant.id }}>
+            <p class="select_options-error-msg hidden">Please Select the options</p>
             {% assign product_form_id = 'quick-add-' | append: section.id | append: product.id %}
             {%- form 'product',
                 product,
@@ -102,7 +103,8 @@
                     type="submit"
                     name="add"
                     class="btn btn--full-width btn--primary"
-                    data-popup-add-to-cart>
+                    data-popup-add-to-cart
+                    >
                     <span>{{ 'products.product.add_to_cart' | t }}</span>
                     <span>{% render 'icon-arrow-right-test' %}</span>
                 </button>

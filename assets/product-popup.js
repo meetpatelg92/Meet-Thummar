@@ -48,6 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // options selection and variant matching 
     let selectedOptions = {};
+    let matchedVariant;
 
     const optionsValues = document.querySelectorAll('.product_variant--options .option_value');
     // handle clicks on option values
@@ -57,6 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
               // add the size name in dropdown 
               if(e.currentTarget.closest('.options_values_list')){
                   e.currentTarget.closest('.options_values').querySelector('.select_size-block p.choose_size').innerText = e.currentTarget.dataset.value;
+                  e.currentTarget.closest('.options_values').querySelector('.select_size-block p.choose_size').classList.add('selected');
                   e.currentTarget.closest('.options_values_list').classList.remove('active_size-list');
               }
               // find which option group this belongs to (option1 / option2 / option3)
@@ -73,7 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
               console.log(variants);
       
               // try to find matching variant
-              let matchedVariant = variants.find(v => {
+            matchedVariant = variants.find(v => {
                   return (!selectedOptions.option1 || v.option1 === selectedOptions.option1) &&
                       (!selectedOptions.option2 || v.option2 === selectedOptions.option2) &&
                       (!selectedOptions.option3 || v.option3 === selectedOptions.option3);
@@ -94,14 +96,47 @@ window.addEventListener('DOMContentLoaded', () => {
         atcForms.forEach((form) => {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
+                const colorOptions = e.currentTarget.closest('.product_popup').querySelectorAll('.option_colors input[type="radio"]');
+                const sizeOptions = e.currentTarget.closest('.product_popup').querySelector('.choose_size');
+
+                if(sizeOptions.classList.contains('selected') && Array.from(colorOptions).some(radio => radio.checked)) {
+                    e.currentTarget.closest('.product_popup').querySelector('.select_options-error-msg').classList.add('hidden');
+                } else {
+                    e.currentTarget.closest('.product_popup').querySelector('.select_options-error-msg').classList.remove('hidden');
+                    return;
+                }
+
+                // check if any product has medium and black selected then soft winter jacket also should add automatically
+                let finalData = {
+                    items: []
+                };
                 const formData = new FormData(form);
-                console.log(...formData);
                 const variantId = formData.get('id');
+                if(matchedVariant.options.includes('M') && matchedVariant.options.includes('Black')) {
+                    finalData.items.push(
+                        {
+                          id: variantId,
+                          quantity: 1
+                        },
+                        {
+                          id: e.currentTarget.closest('.popup_atc').getAttribute('data-extra-addOn-id'), // extra addon product variant ID
+                          quantity: 1
+                        }
+                    );
+                } else {
+                    finalData.items.push({
+                        id: variantId,
+                        quantity: 1
+                    });
+                }
+             
+                // add to cart call
                 fetch('/cart/add.js', {
                     method: 'POST',
-                    body: formData,
+                    body: JSON.stringify(finalData),
                     headers: {
-                        'Accept': 'application/json'
+                       'Content-Type': 'application/json',
+                       'Accept': 'application/json'
                     }
                 })
                 .then(response => {
@@ -111,19 +146,20 @@ window.addEventListener('DOMContentLoaded', () => {
                     return response.json();
                 })
                 .then(data => {
-                    console.log('Item added to cart:', data);
-
-                    // Optionally, update cart UI or show a success message
+                    // Update UI or notify user
                     const popupEl = form.closest('.product_popup');
                     popupEl.classList.remove('active_popup');
-                    document.body.classList.remove('no-scroll');
+                    document.body.classList.remove('no-scroll');    
 
-                    alert('Item added to cart successfully!'); 
+                    // for user to know which item added to cart and redirect to cart page
+                    const titles = data.items.map(item => item.title); // collect titles
+                    alert(`Added to cart: ${titles.join("\n")}`); 
+                    window.open('/cart', '_blank');
                 
                 })
                 .catch(error => {
-                    console.error('Error adding to cart:', error);
-                    alert(error.description || 'There was an error adding the item to the cart.');
+                    console.error('Cart error', error);
+                    alert(error.description || 'Error in adding product in cart.');
                 })
             });
         });

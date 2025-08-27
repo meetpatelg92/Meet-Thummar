@@ -60,6 +60,8 @@
       "type": "custom-header-test",
       "name": "Custom Header",
       "settings": {
+        "logo": "shopify://shop_images/Group_1000007777_1.png",
+        "logo_width": 150,
         "header_text": "Find the ideal gift for your loved ones.",
         "header_btn": "choose gift",
         "header_btn_url": "#"
