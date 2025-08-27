@@ -72,7 +72,9 @@
           "settings": {
             "product": "black-leather-bag",
             "icon_position_top": 59,
-            "icon_position_left": 62
+            "icon_position_left": 62,
+            "icon_position_top_mb": 19,
+            "icon_position_left_mb": 66
           }
         },
         "product_UgqxLM": {
@@ -80,7 +82,9 @@
           "settings": {
             "product": "blue-silk-tuxedo",
             "icon_position_top": 56,
-            "icon_position_left": 85
+            "icon_position_left": 85,
+            "icon_position_top_mb": 16,
+            "icon_position_left_mb": 64
           }
         },
         "product_P3C8kp": {
@@ -88,7 +92,9 @@
           "settings": {
             "product": "chequered-red-shirt",
             "icon_position_top": 24,
-            "icon_position_left": 65
+            "icon_position_left": 65,
+            "icon_position_top_mb": 18,
+            "icon_position_left_mb": 64
           }
         },
         "product_GkVLGF": {
@@ -96,7 +102,9 @@
           "settings": {
             "product": "classic-leather-jacket",
             "icon_position_top": 23,
-            "icon_position_left": 73
+            "icon_position_left": 73,
+            "icon_position_top_mb": 15,
+            "icon_position_left_mb": 67
           }
         },
         "product_AedRPp": {
@@ -104,7 +112,9 @@
           "settings": {
             "product": "classic-varsity-top",
             "icon_position_top": 31,
-            "icon_position_left": 50
+            "icon_position_left": 50,
+            "icon_position_top_mb": 14,
+            "icon_position_left_mb": 65
           }
         },
         "product_TiUW3V": {
@@ -112,7 +122,9 @@
           "settings": {
             "product": "dark-denim-top",
             "icon_position_top": 42,
-            "icon_position_left": 77
+            "icon_position_left": 77,
+            "icon_position_top_mb": 16,
+            "icon_position_left_mb": 62
           }
         }
       },
@@ -126,7 +138,8 @@
       ],
       "name": "Products Grid Test",
       "settings": {
-        "section_title": "Tisso vison in the wild"
+        "section_title": "Tisso vison in the wild",
+        "extra_add_product": "dark-winter-jacket"
       }
     }
   },

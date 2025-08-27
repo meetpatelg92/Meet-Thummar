@@ -32,6 +32,7 @@
                                     <span class="plus-icon">{% render 'icon-plus-test' %}</span>
                                 </button>
                             </div>
+                            {% comment %}Popup snippet{% endcomment %}
                             {% render 'product-popup-test', block:block, product:product %}
                             <style>
                                 .products-grid-block #block-{{ block.id }} .plus_icon {
@@ -39,6 +40,14 @@
                                     left: {{ block.settings.icon_position_left }}%;
                                     transform: translate(-50%, -50%);
                                     transition: transform 0.3s ease;
+                                }
+
+                                @media (max-width:740px) {
+                                    .products-grid-block #block-{{ block.id }} .plus_icon {
+                                        top: {{ block.settings.icon_position_top_mb }}%;
+                                        left: {{ block.settings.icon_position_left_mb }}%;
+                                      
+                                    }
                                 }
                             </style>
                         </div>
@@ -98,6 +107,26 @@
                         "step": 1,
                         "unit": "%",
                         "label": "Icon Position Left",
+                        "default": 10
+                    },
+                    {
+                        "type": "range",
+                        "id": "icon_position_top_mb",
+                        "min": 1,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Icon Position Top Mobile",
+                        "default": 10
+                    },
+                    {
+                        "type": "range",
+                        "id": "icon_position_left_mb",
+                        "min": 1,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "%",
+                        "label": "Icon Position Left Mobile",
                         "default": 10
                     }
                 ]
